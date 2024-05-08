@@ -1,0 +1,49 @@
+#body{
+  background-color: beige;
+}
+#game-board {
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+  margin: 0 auto;
+  position: relative;
+  background-color: azure;
+}
+  
+  .cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #FFF;
+    position: absolute;
+  }
+  
+  .snake {
+    background-color: green;
+  }
+  
+  .segment {
+    width: 18px; /* Reducimos el tamaño del segmento para dejar espacio entre ellos */
+    height: 18px;
+    border-radius: 50%; /* Forma de círculo */
+    background-color: green; /* Color de la serpiente */
+    position: absolute;
+  }
+  
+  .food {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+  }
+.eye {
+  width: 4px; /* Tamaño de los ojos */
+  height: 4px;
+  background-color: black; /* Color de los ojos */
+  border-radius: 50%; /* Forma de círculo */
+  position: absolute;
+}
+
+#food-count{
+  text-align: center;
+}
+  
+  
