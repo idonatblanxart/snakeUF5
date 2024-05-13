@@ -128,8 +128,8 @@ function createSegment(x, y) {
 let foodConsumed = 0; // Variable para contar las comidas consumidas
 let totalUnitsConsumed = 0; // Variable para contar el total de unidades consumidas
 
-function startGame() {
-  const snakeType = prompt("Elige el tipo de serpiente ('green' o 'blue'): ");
+function startGame(snakeColor) {
+  const snake = chooseSnake(snakeColor)
   const durationString = prompt("Elige la duración del juego en minutos (1, 2 o 3):");
   const duration = parseInt(durationString);
    // Verificar si la duración ingresada es válida
@@ -138,7 +138,7 @@ function startGame() {
     return;
   }
 
-  const snake = chooseSnake(snakeType);
+  
   let foods = [];
   for (let i = 0; i < 3; i++) {
     foods.push(Snake.createFood());
@@ -251,17 +251,24 @@ function updateTotalUnitsCount() {
 function chooseSnake(snakeType) {
   let snake;
   switch (snakeType) {
-    case 'green':
-      snake = new ColoredSnake('green');
-      break;
-    case 'blue':
-      snake = new ColoredSnake('blue');
-      break;
-    default:
-      console.error('Tipo de serpiente no válido.');
-  }
-  return snake;
-}
-
+      case 'green':
+          snake = new ColoredSnake('green');
+          break;
+      case 'blue':
+          snake = new ColoredSnake('blue');
+          break;
+      case 'red':
+          snake = new ColoredSnake('red');
+          break;
+      case 'yellow':
+          snake = new ColoredSnake('yellow');
+          break;
+      default:
+          console.error('Tipo de serpiente no válido.');
+ 
+        }
+        return snake;
+       }
+       
 // Iniciar el juego al cargar la página
 startGame();
