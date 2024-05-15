@@ -1,20 +1,43 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Snake Game</title>
+  <!-- LINK DE LOS ESTILOS DE LA PÁGINA -->
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body id="body">
+  <!-- CAJA DEL JUEGO -->
   <div id="game-board"></div>
+
+  <!-- TEXTO TOTAL DE UNIDADES CONSUMIDAS -->
   <h2 id="total-units">Unidades Consumidas</h2>
+
+  <!-- TEXTO PUNTOS TOTALES CONSEGUIDOS -->
   <h2 id="food-count">Puntos Totales: 0</h2>
-  <div id="countdown">Tiempo restante: </div>
-  <button onclick="startGame('green')">Serpiente Verde</button>
- <button onclick="startGame('blue')">Serpiente Azul</button>
- <button onclick="startGame('red')">Serpiente Roja</button>
- <button onclick="startGame('yellow')">Serpiente Amarilla</button>
+
+  <!-- TEXTO DEL TIEMPO -->
+  <h2 id="countdown">Tiempo restante:</h2>
+ 
+  <!-- CAJA DE LOS BOTONES DE LOS COLORES DE LA SERPIENTE -->
+  <div id="cajabotones">
+    <!-- BOTONES DE LOS COLORES DE LA SERPIENTE -->
+    <div id="uno">
+      <button onclick="startGame('green')" id="boton1"><b>Serpiente Verde</b></button>
+    </div>
+    <div id="dos">
+      <button onclick="startGame('blue')" id="boton2"><b>Serpiente Azul</b></button>
+    </div>
+    <div id="tres">
+      <button onclick="startGame('red')" id="boton3"><b>Serpiente Roja</b></button>
+    </div>
+    <div id="cuatro">
+      <button onclick="startGame('yellow')" id="boton4"><b>Serpiente Amarilla</b></button>
+    </div>
+  </div>
+
+  <!-- LINK AL SCRIPT SNAKE1.JS -->
   <script src="snake.js"></script>
 </body>
 </html>
