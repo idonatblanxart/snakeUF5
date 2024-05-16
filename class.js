@@ -1,19 +1,3 @@
-// Clase para representar comida en el juego
-class Food {
-  constructor(type) {
-    this.type = type; // Tipo de comida
-    this.x = Math.floor(Math.random() * 20); // Coordenada X aleatoria
-    this.y = Math.floor(Math.random() * 20); // Coordenada Y aleatoria
-  }
-
-  // Método estático para crear comida aleatoria
-  static create() {
-    const types = ['apple', 'banana', 'pear']; // Tipos de comida disponibles
-    const randomType = types[Math.floor(Math.random() * types.length)]; // Tipo de comida aleatorio
-    return new Food(randomType); // Devuelve un nuevo objeto de comida con el tipo aleatorio
-  }
-}
-
 // Clase para representar objetos en el juego
 class GameObject {
   constructor(x, y) {
@@ -29,6 +13,7 @@ class Snake extends GameObject {
     this.body = [{ x: 5, y: 5 }]; // Cuerpo de la serpiente
     this.direction = 'right'; // Dirección de movimiento
     this.color = color; // Color de la serpiente
+    this.foodType = ['pera', 'carne', 'tomate']; // Tipos de comida disponibles
   }
 
   // Método para mover la serpiente en la dirección actual
@@ -74,9 +59,14 @@ class Snake extends GameObject {
     this.body.push(tail); // Añadir nueva posición al final del cuerpo
   }
 
-  // Método para verificar si la serpiente colisiona con la comida
-  checkCollision(food) {
-    return this.body[0].x === food.x && this.body[0].y === food.y; // Devuelve true si la cabeza de la serpiente está en la misma posición que la comida
+  // Método estático para crear comida en una posición aleatoria
+  static createFood() {
+    const food = {
+      x: Math.floor(Math.random() * 20),
+      y: Math.floor(Math.random() * 20),
+      type: ['pera', 'carne', 'tomate'][Math.floor(Math.random() * 3)] // Tipo de comida aleatorio
+    };
+    return food; // Devuelve un objeto de comida
   }
 }
 
@@ -86,4 +76,5 @@ class ColoredSnake extends Snake {
     super(color); // Llama al constructor de la clase padre
   }
 
+  // Puedes agregar métodos adicionales específicos para las serpientes de colores aquí
 }
