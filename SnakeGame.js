@@ -1,37 +1,47 @@
-import React, { useState } from 'react';
+'use strict';
 
-function SnakeGame() {
-  const [snakeColor, setSnakeColor] = useState(null);
+const e = React.createElement;
 
-  // Función para iniciar el juego con el color de serpiente seleccionado
-  const startGame = (color) => {
-    setSnakeColor(color);
-    // Aquí puedes agregar lógica adicional para iniciar el juego con el color de la serpiente seleccionado
-  };
-
-  return (
-    <div>
-      {/* Botones para seleccionar el color de la serpiente */}
-      <button onClick={() => startGame('green')}>Serpiente Verde</button>
-      <button onClick={() => startGame('blue')}>Serpiente Azul</button>
-      <button onClick={() => startGame('red')}>Serpiente Roja</button>
-      <button onClick={() => startGame('yellow')}>Serpiente Amarilla</button>
-
-      {/* Aquí puedes renderizar el juego usando el color de la serpiente seleccionado */}
-      {snakeColor && <SnakeGameBoard snakeColor={snakeColor} />}
-    </div>
-  );
+class Button extends React.Component {
+  render() {
+    return e(
+      'button',
+      { onClick: () => this.props.startGame(this.props.color) },
+      this.props.color
+    );
+  }
 }
 
-// Componente SnakeGameBoard que renderiza el juego
-function SnakeGameBoard({ snakeColor }) {
-  // Aquí puedes colocar la lógica para renderizar el juego utilizando el color de la serpiente seleccionado
-  return (
-    <div>
-      {/* Renderizar el juego */}
-      <p>Juego con serpiente de color: {snakeColor}</p>
-    </div>
-  );
+class SnakeGame extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { gameStarted: false };
+  }
+
+  startGame(color) {
+    // Lógica para iniciar el juego con el color especificado
+    console.log(`Comenzando juego con serpiente ${color}`);
+    this.setState({ gameStarted: true });
+  }
+
+  render() {
+    return e(
+      'div',
+      null,
+      !this.state.gameStarted && (
+        e('div', null,
+          e(Button, { color: 'Verde', startGame: this.startGame.bind(this) }),
+          e(Button, { color: 'Azul', startGame: this.startGame.bind(this) }),
+          e(Button, { color: 'Rojo', startGame: this.startGame.bind(this) }),
+          e(Button, { color: 'Amarillo', startGame: this.startGame.bind(this) })
+        )
+      ),
+      this.state.gameStarted && (
+        e('div', null, 'Juego iniciado')
+      )
+    );
+  }
 }
 
-export default SnakeGame;
+const domContainer = document.querySelector('#root');
+ReactDOM.render(e(SnakeGame), domContainer);
